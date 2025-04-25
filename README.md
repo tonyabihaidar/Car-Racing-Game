@@ -8,10 +8,7 @@ Watch the gameplay and features overview here: [https://youtu.be/GqratfctyAk](ht
 
 ## 🧑‍🤝‍🧑 Team Members
 
-Tony Abi Haidar 
-Majd Aboul Hosn 
-Samer Barakat   
-Serena Stephan   
+Tony Abi Haidar | Majd Aboul Hosn | Samer Barakat | Serena Stephan   
 
 ---
 
