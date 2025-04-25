@@ -8,12 +8,10 @@ Watch the gameplay and features overview here: [https://youtu.be/GqratfctyAk](ht
 
 ## 🧑‍🤝‍🧑 Team Members
 
-| Name             | Email                  | ID        | Contribution |
-|------------------|------------------------|-----------|--------------|
-| Majd Aboul Hosn  | mga56@mail.aub.edu     | 202403227 | 25%          |
-| Tony Abi Haidar  | tga22@mail.aub.edu     | 202400089 | 25%          |
-| Samer Barakat    | srb13@mail.aub.edu     | 202401785 | 25%          |
-| Serena Stephan   | sjs37@mail.aub.edu     | 202402011 | 25%          |
+Tony Abi Haidar 
+Majd Aboul Hosn 
+Samer Barakat   
+Serena Stephan   
 
 ---
 
