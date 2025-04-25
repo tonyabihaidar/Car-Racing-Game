@@ -105,6 +105,12 @@ Tony Abi Haidar | Majd Aboul Hosn | Samer Barakat | Serena Stephan
 
 ## 👥 Individual Contributions
 
+### Tony Abi Haidar
+- Game logic: Music, movement, obstacles
+- Email verification
+- UI responsiveness
+- Project video
+
 ### Majd Aboul Hosn
 - PyQt GUI: Sign-in, Sign-up, Garage, Leaderboard, Main menu
 - Online players page, shooting, ammo UI
@@ -114,12 +120,6 @@ Tony Abi Haidar | Majd Aboul Hosn | Samer Barakat | Serena Stephan
 - PyQt page integration
 - Server-client functions and peer-to-peer setup
 - Game state communication
-
-### Tony Abi Haidar
-- Game logic: Music, movement, obstacles
-- Email verification
-- UI responsiveness
-- Project video
 
 ### Samer Barakat
 - Frontend UI styling (PyQt)
