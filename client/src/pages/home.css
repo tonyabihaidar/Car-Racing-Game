@@ -1,0 +1,562 @@
+/* Shared layout for Home + AESInfo */
+/* Add smooth transitions for theme changes */
+.home-page,
+.home-card,
+.home-shell,
+.info-shell {
+  transition: background 0.3s ease, 
+              color 0.3s ease, 
+              border-color 0.3s ease,
+              box-shadow 0.3s ease;
+}
+
+/* Light mode for home page */
+:root.light .home-page {
+  background: var(--bg-page);
+}
+
+:root.light .home-card {
+  background: var(--bg-card);
+  border-color: var(--border-subtle);
+  color: var(--text-main);
+}
+
+:root.light .home-card:hover {
+  box-shadow: 0 20px 40px rgba(15, 23, 42, 0.2);
+  border-color: rgba(102, 126, 234, 0.4);
+}
+
+:root.light .home-card-title {
+  color: var(--text-main);
+}
+
+:root.light .home-card-description {
+  color: var(--text-muted);
+}
+
+:root.light .home-hero-title {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+:root.light .home-hero-subtitle {
+  color: var(--text-muted);
+}
+
+/* Rest of your existing home.css continues here... */
+.home-root {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 32px 18px;
+  box-sizing: border-box;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Poppins",
+    sans-serif;
+  color: #f9fafb;
+}
+
+/* HOME (AES Suite) */
+
+.home-shell {
+  width: 100%;
+  max-width: 960px;
+  border-radius: 26px;
+  border: 1px solid rgba(148, 163, 184, 0.35);
+  background: radial-gradient(
+      circle at top left,
+      rgba(124, 58, 237, 0.35),
+      transparent 55%
+    ),
+    radial-gradient(
+      circle at bottom right,
+      rgba(56, 189, 248, 0.18),
+      transparent 55%
+    ),
+    rgba(15, 23, 42, 0.95);
+  box-shadow: 0 26px 60px rgba(15, 23, 42, 0.9);
+  padding: 26px 30px 30px;
+}
+
+.home-header {
+  text-align: center;
+  margin-bottom: 22px;
+}
+
+.home-title {
+  font-size: 2.1rem;
+  font-weight: 800;
+  letter-spacing: 0.03em;
+  margin: 0 0 6px;
+}
+
+.home-subtitle {
+  margin: 0;
+  font-size: 0.95rem;
+  color: #9ca3af;
+}
+
+/* Grid of big buttons */
+
+.home-grid {
+  margin-top: 20px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+@media (max-width: 820px) {
+  .home-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.home-card-btn {
+  border: none;
+  border-radius: 18px;
+  padding: 18px 20px;
+  text-align: left;
+  cursor: pointer;
+  background: radial-gradient(
+      circle at top left,
+      rgba(124, 58, 237, 0.35),
+      transparent 60%
+    ),
+    rgba(15, 23, 42, 0.98);
+  border: 1px solid rgba(148, 163, 184, 0.45);
+  color: #f9fafb;
+  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.9);
+  transition: transform 0.14s ease, box-shadow 0.14s ease,
+    border-color 0.14s ease, background 0.14s ease;
+}
+
+.home-card-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 26px 60px rgba(124, 58, 237, 0.6);
+  border-color: rgba(167, 139, 250, 0.9);
+}
+
+.home-card-title {
+  font-size: 1.05rem;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.home-card-text {
+  font-size: 0.86rem;
+  color: #9ca3af;
+}
+
+/* INFO PAGE */
+
+.info-shell {
+  max-width: 1100px;  /* Increased from 900px */
+  margin: 60px auto;
+  padding: 48px 80px;  /* Increased horizontal padding */
+  background: radial-gradient(
+      circle at top left,
+      rgba(124, 58, 237, 0.25),
+      transparent 55%
+    ),
+    rgba(15, 23, 42, 0.96);
+  border: 1px solid rgba(148, 163, 184, 0.35);
+  border-radius: 24px;
+  box-shadow: 0 26px 60px rgba(15, 23, 42, 0.75);
+  transition: all 0.3s ease;
+}
+
+/* Responsive for smaller screens */
+@media (max-width: 768px) {
+  .info-shell {
+    margin: 40px 20px;
+    padding: 32px 24px;
+  }
+}
+
+.info-back {
+  border: none;
+  background: transparent;
+  color: #a5b4fc;
+  font-size: 0.85rem;
+  cursor: pointer;
+  margin-bottom: 12px;
+}
+
+.info-back:hover {
+  color: #c7d2fe;
+  text-decoration: underline;
+}
+
+.info-title {
+  margin: 0 0 8px;
+  font-size: 1.7rem;
+  font-weight: 700;
+}
+
+.info-lead {
+  margin: 0 0 18px;
+  font-size: 0.95rem;
+  color: #e5e7eb;
+}
+
+.info-section {
+  margin-top: 14px;
+}
+
+.info-heading {
+  font-size: 1.05rem;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.info-text {
+  font-size: 0.9rem;
+  color: #d1d5db;
+  margin: 4px 0;
+}
+
+.info-list {
+  margin: 4px 0 6px 20px;
+  padding: 0;
+  font-size: 0.86rem;
+  color: #cbd5f5;
+}
+.home-page {
+  min-height: 100vh;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  position: relative;
+  background: var(--bg-page);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Poppins", sans-serif;
+}
+
+.home-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 80px 32px 60px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.home-hero {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.home-hero-title {
+  font-size: 4rem;
+  font-weight: 800;
+  margin: 0 0 16px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.home-hero-subtitle {
+  font-size: 1.25rem;
+  color: var(--text-muted);
+  max-width: 700px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+.home-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  gap: 24px;
+  width: 100%;
+}
+
+.home-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 20px;
+  padding: 32px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+.home-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.home-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  border-color: rgba(102, 126, 234, 0.5);
+}
+
+.home-card:hover::before {
+  opacity: 1;
+}
+
+.home-card-icon {
+  font-size: 3rem;
+  width: 80px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.2), rgba(118, 75, 162, 0.2));
+  border-radius: 16px;
+  position: relative;
+  z-index: 1;
+}
+
+.home-card-content {
+  position: relative;
+  z-index: 1;
+}
+
+.home-card-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 0 0 12px;
+  color: var(--text-main);
+}
+
+.home-card-description {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--text-muted);
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .home-container {
+    padding: 60px 20px 40px;
+  }
+
+  .home-hero-title {
+    font-size: 2.5rem;
+  }
+
+  .home-hero-subtitle {
+    font-size: 1.1rem;
+  }
+
+  .home-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* User Dropdown Styles */
+.user-dropdown {
+  position: fixed;
+  top: 24px;
+  right: 32px;
+  z-index: 1000;
+}
+
+.user-dropdown-trigger {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 999px;
+  padding: 6px 12px 6px 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.user-dropdown-trigger:hover {
+  border-color: rgba(102, 126, 234, 0.5);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.user-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: 600;
+  font-size: 0.85rem;
+}
+
+.user-dropdown-arrow {
+  color: var(--text-muted);
+  transition: transform 0.2s ease;
+}
+
+.user-dropdown-arrow.rotate {
+  transform: rotate(180deg);
+}
+
+.user-dropdown-menu {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  min-width: 220px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+  animation: dropdownSlide 0.2s ease;
+}
+
+@keyframes dropdownSlide {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.user-dropdown-header {
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.user-dropdown-email {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  word-break: break-all;
+}
+
+.user-dropdown-divider {
+  height: 1px;
+  background: var(--border-subtle);
+}
+
+.user-dropdown-item {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  background: transparent;
+  border: none;
+  color: var(--text-main);
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background 0.2s ease;
+  text-align: left;
+}
+
+.user-dropdown-item:hover {
+  background: rgba(102, 126, 234, 0.1);
+}
+
+.user-dropdown-item.danger {
+  color: #ef4444;
+}
+
+.user-dropdown-item.danger:hover {
+  background: rgba(239, 68, 68, 0.1);
+}
+
+.user-dropdown-item svg {
+  flex-shrink: 0;
+}
+/* Light mode for user dropdown */
+:root.light .user-dropdown-trigger {
+  background: var(--bg-card);
+  border-color: var(--border-subtle);
+}
+
+:root.light .user-dropdown-trigger:hover {
+  border-color: rgba(102, 126, 234, 0.4);
+}
+
+:root.light .user-dropdown-menu {
+  background: var(--bg-card);
+  border-color: var(--border-subtle);
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.15);
+}
+
+:root.light .user-dropdown-header {
+  border-bottom-color: var(--border-subtle);
+}
+
+:root.light .user-dropdown-email {
+  color: var(--text-muted);
+}
+
+:root.light .user-dropdown-divider {
+  background: var(--border-subtle);
+}
+
+:root.light .user-dropdown-item {
+  color: var(--text-main);
+}
+
+:root.light .user-dropdown-item:hover {
+  background: rgba(102, 126, 234, 0.08);
+}
+
+:root.light .user-dropdown-arrow {
+  color: var(--text-muted);
+}
+/* Light mode for info page */
+:root.light .info-shell {
+  background: radial-gradient(
+      circle at top left,
+      rgba(124, 58, 237, 0.15),
+      transparent 55%
+    ),
+    rgba(255, 255, 255, 0.96);
+  border-color: var(--border-subtle);
+  box-shadow: 0 26px 60px rgba(15, 23, 42, 0.15);
+}
+
+:root.light .info-title {
+  color: var(--text-main);
+}
+
+:root.light .info-lead {
+  color: var(--text-muted);
+}
+
+:root.light .info-heading {
+  color: var(--text-main);
+}
+
+:root.light .info-text {
+  color: var(--text-muted);
+}
+
+:root.light .info-list {
+  color: var(--text-muted);
+}
+
+:root.light .info-back {
+  color: #7c3aed;
+}
+
+:root.light .info-back:hover {
+  color: #6d28d9;
+}
+
+:root.light .home-root {
+  background: var(--bg-page);
+}

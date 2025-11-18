@@ -1,0 +1,403 @@
+/* =====================================================================
+   GLOBAL AUTH LAYOUT — CENTER EVERYTHING
+   ===================================================================== */
+/* Smooth transitions */
+.auth-root,
+.auth-card,
+.auth-side,
+.auth-input,
+.auth-select {
+  transition: background 0.3s ease, 
+              color 0.3s ease, 
+              border-color 0.3s ease,
+              box-shadow 0.3s ease;
+}
+
+/* Light mode for auth pages */
+:root.light .auth-root {
+  background: radial-gradient(circle at 20% 20%, rgba(124, 58, 237, 0.15), transparent 55%),
+              radial-gradient(circle at 80% 80%, rgba(56, 189, 248, 0.1), transparent 55%),
+              linear-gradient(135deg, #f8fafc, #e2e8f0 55%, #f1f5f9);
+}
+
+:root.light .auth-card,
+:root.light .auth-side {
+  background: rgba(255, 255, 255, 0.95);
+  border-color: rgba(148, 163, 184, 0.3);
+  color: var(--text-main);
+}
+
+:root.light .auth-input,
+:root.light .auth-select {
+  background: rgba(248, 250, 252, 0.9);
+  border-color: rgba(148, 163, 184, 0.3);
+  color: var(--text-main);
+}
+
+:root.light .auth-input::placeholder {
+  color: #94a3b8;
+}
+
+:root.light .auth-input:focus {
+  border-color: #a78bfa;
+  box-shadow: 0 0 0 1.5px #7c3aed;
+}
+
+:root.light .auth-label {
+  color: #475569;
+}
+
+:root.light .auth-subtitle {
+  color: #64748b;
+}
+
+:root.light .auth-side-text {
+  color: #64748b;
+}
+
+:root.light .auth-side-list {
+  color: #64748b;
+}
+
+:root.light .auth-toggle {
+  background: rgba(241, 245, 249, 0.7);
+  border-color: rgba(148, 163, 184, 0.4);
+}
+
+:root.light .auth-link-button {
+  color: #7c3aed;
+}
+
+:root.light .auth-link-button:hover {
+  color: #6d28d9;
+}
+
+/* Rest of your existing auth.css continues here... */
+.auth-root {
+  position: relative;
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;     /* FULL VERTICAL CENTER */
+  padding: 0;              /* REMOVE spacing that broke centering */
+  margin: 0;
+
+  background:
+    radial-gradient(circle at 20% 20%, rgba(124, 58, 237, 0.45), transparent 55%),
+    radial-gradient(circle at 80% 80%, rgba(56, 189, 248, 0.25), transparent 55%),
+    linear-gradient(135deg, #020617, #050817 55%, #020617);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Poppins", sans-serif;
+  color: #f9fafb;
+  overflow: hidden;
+}
+
+.auth-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(circle at center, rgba(0, 0, 0, 0.35), transparent 70%);
+}
+
+
+/* =====================================================================
+   AUTH LAYOUT SHELL
+   ===================================================================== */
+
+.auth-shell {
+  width: 100%;
+  max-width: 980px;
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+  gap: 22px;
+  padding: 10px;
+}
+
+.auth-shell--single {
+  grid-template-columns: minmax(0, 1fr);
+  max-width: 540px;
+}
+
+
+/* =====================================================================
+   LEFT SIDE (BRAND INFO)
+   ===================================================================== */
+
+.auth-side {
+  background: rgba(15, 23, 42, 0.93);
+  border-radius: 22px;
+  border: 1px solid rgba(148, 163, 184, 0.35);
+  padding: 28px;
+  box-shadow: 0 25px 60px rgba(15, 23, 42, 0.85);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.auth-side-pill {
+  display: inline-flex;
+  padding: 5px 14px;
+  background: linear-gradient(135deg, #facc15, #a78bfa);
+  color: #0f172a;
+  font-size: 0.82rem;
+  border-radius: 999px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  margin-bottom: 14px;
+}
+
+.auth-side-title {
+  font-size: 1.7rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.auth-side-text {
+  max-width: 380px;
+  color: #9ca3af;
+  font-size: 0.92rem;
+  line-height: 1.5;
+}
+
+.auth-side-foot-title {
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin: 18px 0 6px;
+}
+
+.auth-side-list {
+  padding-left: 18px;
+  font-size: 0.84rem;
+  color: #9ca3af;
+  line-height: 1.45;
+}
+
+
+/* =====================================================================
+   AUTH CARD (LOGIN / SIGNUP / FORGOT)
+   ===================================================================== */
+
+.auth-card {
+  background: rgba(15, 23, 42, 0.93);
+  border-radius: 22px;
+  border: 1px solid rgba(148, 163, 184, 0.35);
+  padding: 30px 34px;
+  box-shadow: 0 25px 60px rgba(15, 23, 42, 0.85);
+  backdrop-filter: blur(10px);
+  animation: fadeInUp 0.35s ease;
+}
+
+/* Bigger special card for Forgot Password */
+.fp-card {
+  width: 520px;
+  max-width: 90vw;
+  padding: 44px 48px;     /* Bigger size */
+  border-radius: 26px;
+}
+
+
+/* =====================================================================
+   FORM TOGGLE (LOGIN | SIGNUP)
+   ===================================================================== */
+
+.auth-toggle {
+  display: inline-flex;
+  padding: 3px;
+  border-radius: 999px;
+  background: rgba(15, 23, 42, 0.7);
+  border: 1px solid rgba(148, 163, 184, 0.45);
+  margin-bottom: 16px;
+}
+
+.auth-toggle-btn {
+  padding: 8px 18px;
+  border-radius: 999px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 0.85rem;
+  color: #a5b4fc;
+  transition: all 0.15s ease;
+}
+
+.auth-toggle-btn--active {
+  background: linear-gradient(135deg, #7c3aed, #a78bfa);
+  color: #fff;
+  transform: translateY(-1px);
+}
+
+
+/* =====================================================================
+   TITLES & TEXT
+   ===================================================================== */
+
+.auth-title {
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-bottom: 3px;
+}
+
+.auth-subtitle {
+  font-size: 0.9rem;
+  color: #9ca3af;
+  margin-bottom: 20px;
+}
+
+
+/* =====================================================================
+   FORM ELEMENTS
+   ===================================================================== */
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* NEW: force label + input to stack vertically */
+.auth-field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: stretch;
+}
+
+.auth-label {
+  font-size: 0.82rem;
+  color: #d1d5db;
+}
+
+.auth-input {
+  padding: 10px 12px;
+  border-radius: 12px;
+  border: 1px solid rgba(148, 163, 184, 0.4);
+  background: rgba(15, 23, 42, 0.85);
+  color: #f1f5f9;
+  font-size: 0.92rem;
+  outline: none;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.auth-input::placeholder {
+  color: #6b7280;
+}
+
+.auth-input:focus {
+  border-color: #a78bfa;
+  box-shadow: 0 0 0 1.5px #7c3aed;
+}
+
+
+/* =====================================================================
+   LINKS / MISC
+   ===================================================================== */
+
+.auth-link-button {
+  background: transparent;
+  border: none;
+  color: #a5b4fc;
+  cursor: pointer;
+  font-size: 0.85rem;
+  transition: color 0.15s ease;
+}
+
+.auth-link-button:hover {
+  color: white;
+  text-decoration: underline;
+}
+
+.auth-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+
+/* =====================================================================
+   SUBMIT BUTTON
+   ===================================================================== */
+
+.auth-submit {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 999px;
+  border: none;
+  cursor: pointer;
+  background: linear-gradient(135deg, #7c3aed, #a78bfa);
+  color: white;
+  font-weight: 600;
+  font-size: 1rem;
+  box-shadow: 0 20px 40px rgba(124, 58, 237, 0.45);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.auth-submit:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 26px 55px rgba(124, 58, 237, 0.65);
+}
+
+.auth-submit:disabled {
+  opacity: 0.6;
+  cursor: default;
+  box-shadow: none;
+}
+
+
+/* =====================================================================
+   ALERTS
+   ===================================================================== */
+
+.auth-alert {
+  border-radius: 12px;
+  padding: 10px 14px;
+  font-size: 0.85rem;
+  margin-bottom: 6px;
+}
+
+.auth-alert--error {
+  background: rgba(239, 68, 68, 0.15);
+  border: 1px solid rgba(239, 68, 68, 0.45);
+  color: #fecaca;
+}
+
+
+.auth-alert--success {
+  background-color: #d1fae5;
+  color: #065f46;
+  padding: 12px;
+  border-radius: 6px;
+  margin-bottom: 16px;
+  font-size: 14px;
+  border: 1px solid #6ee7b7;
+}
+
+
+/* =====================================================================
+   ANIMATION
+   ===================================================================== */
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+/* =====================================================================
+   RESPONSIVE
+   ===================================================================== */
+
+@media (max-width: 880px) {
+  .auth-shell {
+    grid-template-columns: 1fr;
+    max-width: 540px;
+  }
+  .auth-side {
+    display: none;
+  }
+}

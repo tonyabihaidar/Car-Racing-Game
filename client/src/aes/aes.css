@@ -1,0 +1,1410 @@
+/* ------------------------------------------------------------------
+   Cyber Violet Theme for AES Visualizer
+   ------------------------------------------------------------------ */
+/* Add these at the TOP of aes.css, before the existing :root declaration */
+
+/* Smooth transitions for theme switching */
+* {
+  transition: background-color 0.3s ease, 
+              color 0.3s ease, 
+              border-color 0.3s ease,
+              box-shadow 0.3s ease;
+}
+
+/* Prevent transition on initial load */
+.aes-root {
+  transition: none;
+}
+
+.aes-root * {
+  transition: background-color 0.3s ease, 
+              color 0.3s ease, 
+              border-color 0.3s ease,
+              box-shadow 0.3s ease;
+}
+
+/* Update existing :root variables - REPLACE your existing :root with this */
+:root {
+  --bg: #020617;
+  --bg-elevated: #020617;
+  --bg-panel: #020617;
+  --bg-card: #020617;
+  --bg-cell-state: #1d4ed8;
+  --bg-cell-key: #020617;
+  --accent: #eab308;
+  --accent-soft: rgba(234, 179, 8, 0.12);
+  --text-main: #f9fafb;
+  --text-muted: #9ca3af;
+  --border-subtle: rgba(148, 163, 184, 0.4);
+  --radius-xl: 18px;
+  --radius-lg: 12px;
+  --radius-md: 8px;
+  --shadow-soft: 0 22px 45px rgba(15, 23, 42, 0.75);
+}
+
+/* Light mode overrides for AES pages */
+:root.light {
+  --bg: #f8fafc;
+  --bg-elevated: #ffffff;
+  --bg-panel: #ffffff;
+  --bg-card: #ffffff;
+  --bg-cell-state: #3b82f6;
+  --bg-cell-key: #f1f5f9;
+  --accent: #f59e0b;
+  --accent-soft: rgba(245, 158, 11, 0.15);
+  --text-main: #0f172a;
+  --text-muted: #475569;
+  --border-subtle: rgba(148, 163, 184, 0.3);
+  --shadow-soft: 0 22px 45px rgba(15, 23, 42, 0.15);
+}
+
+/* Rest of your existing aes.css continues here... */
+.aes-root {
+  --aes-bg: #0a0a0f;
+  --aes-bg-soft: #111320;
+  --aes-surface: #1a1b27;
+  --aes-surface-alt: #232438;
+
+  --aes-primary: #7c3aed;
+  --aes-primary-soft: rgba(124, 58, 237, 0.15);
+  --aes-primary-strong: #6d28d9;
+  --aes-secondary: #a78bfa;
+
+  --aes-border-subtle: rgba(148, 163, 184, 0.25);
+  --aes-border-strong: rgba(148, 163, 184, 0.6);
+
+  --aes-text-main: #e5e7eb;
+  --aes-text-muted: #9ca3af;
+  --aes-text-soft: #6b7280;
+
+  --aes-success: #10b981;
+  --aes-warning: #facc15;
+  --aes-error: #f87171;
+
+  --aes-radius-lg: 18px;
+  --aes-radius-md: 12px;
+  --aes-radius-sm: 8px;
+
+  --aes-shadow-soft: 0 18px 45px rgba(15, 23, 42, 0.75);
+  --aes-shadow-chip: 0 0 0 1px rgba(148, 163, 184, 0.2);
+
+  --aes-font-sans: system-ui, -apple-system, BlinkMacSystemFont, "Poppins",
+    "Segoe UI", sans-serif;
+  --aes-font-mono: "Fira Code", ui-monospace, SFMono-Regular, Menlo, Monaco,
+    Consolas, "Liberation Mono", "Courier New", monospace;
+
+  min-height: 100vh;
+  padding: 24px 24px 32px;
+  font-family: var(--aes-font-sans);
+  color: var(--aes-text-main);
+
+  background:
+    radial-gradient(circle at top left, rgba(124, 58, 237, 0.35), transparent 55%),
+    radial-gradient(circle at bottom right, rgba(56, 189, 248, 0.18), transparent 55%),
+    linear-gradient(135deg, #020617, #020617 55%, #050816);
+}
+
+/* Dark/light modifiers */
+.aes-root--dark {
+  /* uses defaults above */
+}
+
+.aes-root--light {
+  --aes-bg: #f4f4ff;
+  --aes-bg-soft: #e5e7ff;
+  --aes-surface: #ffffff;
+  --aes-surface-alt: #eef2ff;
+
+  --aes-text-main: #111827;
+  --aes-text-muted: #4b5563;
+  --aes-text-soft: #6b7280;
+
+  --aes-border-subtle: rgba(148, 163, 184, 0.5);
+  --aes-border-strong: rgba(55, 65, 81, 0.9);
+
+  background:
+    radial-gradient(circle at top left, rgba(167, 139, 250, 0.55), transparent 55%),
+    radial-gradient(circle at bottom right, rgba(56, 189, 248, 0.24), transparent 55%),
+    linear-gradient(135deg, #eef2ff, #f9fafb);
+}
+
+/* center main content */
+.aes-root > main.aes-layout,
+.aes-root > header.aes-header {
+  max-width: 1220px;
+  margin: 0 auto;
+}
+
+/* ------------------------------------------------------------------
+   Header
+   ------------------------------------------------------------------ */
+
+.aes-header {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin-bottom: 22px;
+}
+
+.aes-title-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30px;
+  background: radial-gradient(circle at 10% 0%, #a855f7, #4c1d95);
+  color: #f9fafb;
+  box-shadow: 0 16px 35px rgba(79, 70, 229, 0.5);
+}
+
+.aes-title {
+  font-size: 1.6rem;
+  letter-spacing: 0.03em;
+  font-weight: 700;
+  color: #f9fafb;
+}
+
+.aes-root--light .aes-title {
+  color: #020617;
+}
+
+.aes-subtitle {
+  font-size: 0.9rem;
+  color: var(--aes-text-soft);
+  margin-top: 4px;
+}
+
+.aes-header-actions {
+  margin-left: auto;
+}
+
+/* theme toggle button can be a bit smaller */
+.aes-theme-toggle {
+  font-size: 0.78rem;
+}
+
+/* ------------------------------------------------------------------
+   Toast
+   ------------------------------------------------------------------ */
+
+.aes-toast {
+  position: fixed;
+  top: 16px;
+  right: 16px;
+  background: rgba(15, 23, 42, 0.95);
+  color: #e5e7eb;
+  padding: 10px 16px;
+  border-radius: 999px;
+  border: 1px solid rgba(129, 140, 248, 0.6);
+  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.9);
+  backdrop-filter: blur(14px);
+  font-size: 0.85rem;
+  z-index: 50;
+}
+
+/* ------------------------------------------------------------------
+   Main layout
+   ------------------------------------------------------------------ */
+
+.aes-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(0, 1.2fr);
+  gap: 20px;
+}
+
+.aes-panel {
+  background: linear-gradient(145deg, rgba(15, 23, 42, 0.9), rgba(15, 23, 42, 0.95));
+  border-radius: var(--aes-radius-lg);
+  box-shadow: var(--aes-shadow-soft);
+  padding: 20px 20px 22px;
+  border: 1px solid rgba(148, 163, 184, 0.3);
+  backdrop-filter: blur(14px);
+}
+
+.aes-root--light .aes-panel {
+  background: linear-gradient(145deg, #ffffff, #eef2ff);
+  border-color: rgba(148, 163, 184, 0.55);
+}
+
+.aes-panel--right {
+  background: radial-gradient(circle at top right, rgba(124, 58, 237, 0.12), transparent 55%),
+    linear-gradient(145deg, rgba(15, 23, 42, 0.96), rgba(15, 23, 42, 0.98));
+}
+
+.aes-root--light .aes-panel--right {
+  background:
+    radial-gradient(circle at top right, rgba(124, 58, 237, 0.12), transparent 55%),
+    linear-gradient(145deg, #ffffff, #e5e7ff);
+}
+
+.aes-panel-title {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: #e5e7eb;
+}
+
+.aes-root--light .aes-panel-title {
+  color: #111827;
+}
+
+/* ------------------------------------------------------------------
+   Stats cards
+   ------------------------------------------------------------------ */
+
+.aes-stats {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  margin-bottom: 18px;
+}
+
+.aes-stat-card {
+  background: radial-gradient(circle at top left, rgba(124, 58, 237, 0.18), transparent 70%),
+    var(--aes-surface);
+  border-radius: var(--aes-radius-md);
+  padding: 10px 12px;
+  border: 1px solid rgba(148, 163, 184, 0.25);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.aes-root--light .aes-stat-card {
+  background: radial-gradient(circle at top left, rgba(124, 58, 237, 0.12), transparent 70%),
+    #f9fafb;
+}
+
+.aes-stat-label {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--aes-text-soft);
+}
+
+.aes-stat-value {
+  font-size: 0.96rem;
+  font-weight: 600;
+  color: #f9fafb;
+}
+
+.aes-root--light .aes-stat-value {
+  color: #111827;
+}
+
+/* ------------------------------------------------------------------
+   Sections & form layout
+   ------------------------------------------------------------------ */
+
+.aes-section {
+  margin-top: 12px;
+  padding: 12px 14px 14px;
+  background: rgba(15, 23, 42, 0.75);
+  border-radius: var(--aes-radius-md);
+  border: 1px solid rgba(148, 163, 184, 0.25);
+}
+
+.aes-root--light .aes-section {
+  background: #f9fafb;
+  border-color: rgba(148, 163, 184, 0.4);
+}
+
+.aes-section-title {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #e5e7eb;
+  margin-bottom: 10px;
+}
+
+.aes-root--light .aes-section-title {
+  color: #111827;
+}
+
+.aes-form-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.3fr);
+  gap: 12px;
+}
+
+.aes-form-group {
+  margin-bottom: 12px;
+}
+
+.aes-label {
+  display: block;
+  font-size: 0.8rem;
+  margin-bottom: 4px;
+  color: var(--aes-text-muted);
+}
+
+.aes-help,
+.aes-footnote {
+  font-size: 0.75rem;
+  color: var(--aes-text-soft);
+  margin-top: 4px;
+}
+
+/* ------------------------------------------------------------------
+   Inputs, selects, textarea
+   ------------------------------------------------------------------ */
+
+.aes-input,
+.aes-select,
+.aes-textarea {
+  width: 100%;
+  background: rgba(15, 23, 42, 0.85);
+  border-radius: var(--aes-radius-sm);
+  border: 1px solid var(--aes-border-subtle);
+  color: var(--aes-text-main);
+  padding: 7px 9px;
+  font-size: 0.82rem;
+  font-family: var(--aes-font-mono);
+  outline: none;
+  transition: border-color 0.16s ease, box-shadow 0.16s ease, background 0.16s ease;
+}
+
+.aes-root--light .aes-input,
+.aes-root--light .aes-select,
+.aes-root--light .aes-textarea {
+  background: #f9fafb;
+  color: #111827;
+}
+
+.aes-input::placeholder,
+.aes-textarea::placeholder {
+  color: #4b5563;
+}
+
+.aes-input:focus,
+.aes-select:focus,
+.aes-textarea:focus {
+  border-color: rgba(167, 139, 250, 0.9);
+  box-shadow: 0 0 0 1px rgba(124, 58, 237, 0.7);
+  background: rgba(15, 23, 42, 0.95);
+}
+
+.aes-root--light .aes-input:focus,
+.aes-root--light .aes-select:focus,
+.aes-root--light .aes-textarea:focus {
+  background: #ffffff;
+}
+
+.aes-input-row {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.aes-textarea {
+  resize: vertical;
+  min-height: 90px;
+  line-height: 1.4;
+}
+
+/* ------------------------------------------------------------------
+   Buttons
+   ------------------------------------------------------------------ */
+
+.aes-button {
+  border-radius: 999px;
+  border: 1px solid transparent;
+  padding: 6px 12px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.16s ease, border-color 0.16s ease, transform 0.07s ease,
+    box-shadow 0.16s ease, color 0.16s ease;
+  font-family: var(--aes-font-sans);
+  white-space: nowrap;
+}
+
+.aes-button--primary {
+  background: linear-gradient(135deg, var(--aes-primary), var(--aes-secondary));
+  color: #f9fafb;
+  box-shadow: 0 14px 32px rgba(124, 58, 237, 0.55);
+}
+
+.aes-button--primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 18px 40px rgba(124, 58, 237, 0.7);
+}
+
+.aes-button--ghost {
+  background: rgba(15, 23, 42, 0.9);
+  border-color: rgba(148, 163, 184, 0.45);
+  color: var(--aes-text-muted);
+}
+
+.aes-root--light .aes-button--ghost {
+  background: #f9fafb;
+  border-color: rgba(148, 163, 184, 0.8);
+  color: #4b5563;
+}
+
+.aes-button--ghost:hover:not(:disabled) {
+  border-color: rgba(167, 139, 250, 0.95);
+  color: #e5e7eb;
+  background: rgba(30, 64, 175, 0.2);
+}
+
+.aes-root--light .aes-button--ghost:hover:not(:disabled) {
+  color: #111827;
+  background: #e5e7ff;
+}
+
+/* Disabled state */
+.aes-button:disabled {
+  opacity: 0.45;
+  cursor: default;
+  box-shadow: none;
+  transform: none;
+}
+
+/* ------------------------------------------------------------------
+   Errors
+   ------------------------------------------------------------------ */
+
+.aes-error {
+  margin-top: 6px;
+  margin-bottom: 6px;
+  font-size: 0.78rem;
+  color: #fee2e2;
+  background: rgba(127, 29, 29, 0.18);
+  border-radius: var(--aes-radius-sm);
+  border: 1px solid rgba(248, 113, 113, 0.7);
+  padding: 7px 9px;
+}
+
+/* Divider */
+.aes-divider {
+  border-top: 1px dashed rgba(148, 163, 184, 0.35);
+  margin: 14px 0;
+}
+
+/* Full-text summary */
+.aes-full-summary {
+  margin-top: 10px;
+  padding: 8px 9px;
+  border-radius: var(--aes-radius-sm);
+  border: 1px solid rgba(148, 163, 184, 0.4);
+  background: rgba(15, 23, 42, 0.8);
+  font-size: 0.8rem;
+  color: var(--aes-text-muted);
+}
+
+.aes-root--light .aes-full-summary {
+  background: #f9fafb;
+}
+
+/* ------------------------------------------------------------------
+   Right panel – steps, ciphertext, blocks
+   ------------------------------------------------------------------ */
+
+.aes-steps-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+  gap: 10px;
+}
+
+.aes-steps-subtitle {
+  font-size: 0.8rem;
+  color: var(--aes-text-soft);
+}
+
+.aes-steps-stepname {
+  font-weight: 500;
+}
+
+.aes-steps-nav {
+  display: flex;
+  gap: 6px;
+}
+
+/* Timeline bar */
+.aes-timeline {
+  display: flex;
+  gap: 6px;
+  overflow-x: auto;
+  padding: 6px 2px 8px;
+  margin-bottom: 10px;
+}
+
+.aes-timeline-step {
+  min-width: 105px;
+  border-radius: 999px;
+  border: 1px solid rgba(148, 163, 184, 0.4);
+  background: rgba(15, 23, 42, 0.9);
+  color: var(--aes-text-soft);
+  padding: 4px 8px;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 2px;
+  cursor: pointer;
+  font-size: 0.7rem;
+  transition: background 0.16s ease, border-color 0.16s ease,
+    color 0.16s ease, transform 0.07s ease;
+}
+
+.aes-root--light .aes-timeline-step {
+  background: #f9fafb;
+}
+
+.aes-timeline-step:hover {
+  border-color: rgba(167, 139, 250, 0.95);
+  color: #e5e7eb;
+  transform: translateY(-1px);
+}
+
+.aes-timeline-step--active {
+  background: linear-gradient(135deg, rgba(124, 58, 237, 0.9), rgba(59, 130, 246, 0.95));
+  color: #f9fafb;
+  border-color: transparent;
+}
+
+.aes-timeline-round {
+  font-weight: 600;
+  font-size: 0.7rem;
+}
+
+.aes-timeline-label {
+  font-size: 0.72rem;
+}
+
+/* Ciphertext section */
+.aes-cipher-section {
+  margin-bottom: 12px;
+  padding: 10px 12px;
+  border-radius: var(--aes-radius-md);
+  background: radial-gradient(circle at top left, rgba(79, 70, 229, 0.22), transparent 60%),
+    rgba(15, 23, 42, 0.95);
+  border: 1px solid rgba(129, 140, 248, 0.7);
+  box-shadow: 0 10px 26px rgba(30, 64, 175, 0.55);
+}
+
+.aes-root--light .aes-cipher-section {
+  background: radial-gradient(circle at top left, rgba(129, 140, 248, 0.3), transparent 60%),
+    #ffffff;
+}
+
+.aes-cipher-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 6px;
+}
+
+.aes-result-label {
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #c7d2fe;
+}
+
+.aes-cipher-actions {
+  display: flex;
+  gap: 6px;
+}
+
+.aes-cipher-value {
+  font-family: var(--aes-font-mono);
+  font-size: 0.8rem;
+  word-break: break-all;
+  color: #e5e7eb;
+}
+
+.aes-root--light .aes-cipher-value {
+  color: #111827;
+}
+
+/* Block selector */
+.aes-block-selector {
+  margin-bottom: 10px;
+  padding: 8px 10px;
+  border-radius: var(--aes-radius-md);
+  background: rgba(15, 23, 42, 0.85);
+  border: 1px solid rgba(148, 163, 184, 0.35);
+}
+
+.aes-root--light .aes-block-selector {
+  background: #f9fafb;
+}
+
+/* ------------------------------------------------------------------
+   Matrices
+   ------------------------------------------------------------------ */
+
+.aes-grids {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 10px;
+}
+
+.aes-grid-card {
+  background: var(--aes-surface);
+  border-radius: var(--aes-radius-md);
+  padding: 10px;
+  border: 1px solid rgba(148, 163, 184, 0.4);
+  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.7);
+}
+
+.aes-root--light .aes-grid-card {
+  background: #ffffff;
+}
+
+.aes-grid-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 6px;
+}
+
+.aes-grid-title {
+  font-size: 0.86rem;
+  font-weight: 600;
+  color: #e5e7eb;
+}
+
+.aes-root--light .aes-grid-title {
+  color: #111827;
+}
+
+/* Matrix grid */
+.aes-matrix {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 6px;
+}
+
+.aes-cell {
+  border-radius: 10px;
+  padding: 6px 0;
+  text-align: center;
+  font-family: var(--aes-font-mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.05em;
+  border: 1px solid rgba(148, 163, 184, 0.6);
+  box-shadow: var(--aes-shadow-chip);
+  transition: transform 0.07s ease, box-shadow 0.16s ease,
+    border-color 0.16s ease, background 0.16s ease;
+}
+
+/* State cells: slightly violet-tinted */
+.aes-cell--state {
+  background: radial-gradient(circle at 10% 0%, rgba(124, 58, 237, 0.28), rgba(15, 23, 42, 0.95));
+  color: #f9fafb;
+}
+
+/* Round key cells: darker, bluish */
+.aes-cell--key {
+  background: radial-gradient(circle at 90% 0%, rgba(56, 189, 248, 0.25), rgba(15, 23, 42, 0.95));
+  color: #e5e7eb;
+}
+
+.aes-cell--state:hover,
+.aes-cell--key:hover {
+  transform: translateY(-1px);
+  border-color: rgba(167, 139, 250, 0.95);
+  box-shadow: 0 0 0 1px rgba(167, 139, 250, 0.9),
+    0 14px 26px rgba(15, 23, 42, 0.95);
+}
+
+/* ------------------------------------------------------------------
+   Legend under matrices
+   ------------------------------------------------------------------ */
+
+.aes-legend {
+  margin-top: 12px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 10px;
+}
+
+.aes-legend-item {
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+  padding: 8px 9px;
+  border-radius: var(--aes-radius-md);
+  border: 1px solid rgba(148, 163, 184, 0.4);
+  background: rgba(15, 23, 42, 0.85);
+}
+
+.aes-root--light .aes-legend-item {
+  background: #f9fafb;
+}
+
+.aes-legend-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  margin-top: 4px;
+}
+
+.aes-legend-dot--state {
+  background: #7c3aed;
+}
+
+.aes-legend-dot--key {
+  background: #38bdf8;
+}
+
+.aes-legend-title {
+  font-size: 0.8rem;
+  font-weight: 600;
+  margin-bottom: 2px;
+}
+
+.aes-legend-text {
+  font-size: 0.76rem;
+  color: var(--aes-text-soft);
+}
+
+/* ------------------------------------------------------------------
+   Responsive
+   ------------------------------------------------------------------ */
+
+@media (max-width: 1024px) {
+  .aes-layout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .aes-panel {
+    padding: 18px;
+  }
+
+/* Header layout – keep existing, just ensure space for back button */
+.aes-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+/* Group icon + title so back button can sit on its own */
+.aes-header-main {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex: 1;
+}
+
+/* Back button – small pill, pushed slightly more left */
+.aes-back-button {
+  align-self: flex-start;
+  margin-right: 10px;
+  margin-left: -6px; /* visually closer to the card edge */
+  padding: 6px 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(148, 163, 184, 0.6);
+  background: radial-gradient(circle at 0% 0%, #020617, #020617);
+  color: #e5e7eb;
+  font-size: 0.82rem;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  box-shadow: 0 12px 28px rgba(15, 23, 42, 0.7);
+  transition: background 0.15s ease, transform 0.12s ease, box-shadow 0.15s ease;
+}
+
+.aes-back-button:hover {
+  background: radial-gradient(circle at 0% 0%, #0f172a, #020617);
+  transform: translateY(-1px);
+  box-shadow: 0 18px 38px rgba(15, 23, 42, 0.85);
+}
+
+
+  .aes-header-actions {
+    margin-left: 0;
+  }
+}
+
+@media (max-width: 720px) {
+  .aes-root {
+    padding: 16px 12px 24px;
+  }
+
+  .aes-stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .aes-form-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .aes-grids {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .aes-legend {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  /* Back link in headers */
+.aes-back-link {
+  margin-right: 10px;
+  border: none;
+  background: transparent;
+  color: #a5b4fc;
+  font-size: 0.82rem;
+  cursor: pointer;
+  padding: 4px 0;
+}
+.aes-back-link:hover {
+  color: #c7d2fe;
+  text-decoration: underline;
+}
+
+/* Home grid */
+.home-grid {
+  margin-top: 16px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 14px;
+}
+
+.home-card {
+  background: rgba(15, 23, 42, 0.96);
+  border-radius: 18px;
+  border: 1px solid rgba(148, 163, 184, 0.4);
+  padding: 18px 18px 16px;
+  text-align: left;
+  cursor: pointer;
+  transition: transform 0.12s ease, box-shadow 0.12s ease,
+    border-color 0.12s ease, background 0.12s ease;
+}
+.home-card--primary {
+  background: radial-gradient(circle at top left, rgba(124, 58, 237, 0.5), rgba(15, 23, 42, 0.98));
+}
+.home-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 22px 45px rgba(15, 23, 42, 0.9);
+  border-color: rgba(196, 181, 253, 0.9);
+}
+
+.home-card-title {
+  margin: 0 0 6px;
+  font-size: 1.05rem;
+}
+.home-card-text {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #9ca3af;
+}
+
+/* Learn AES layout */
+.learn-body {
+  margin-top: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.learn-section {
+  background: rgba(15, 23, 42, 0.96);
+  border-radius: 18px;
+  border: 1px solid rgba(148, 163, 184, 0.4);
+  padding: 16px 18px;
+  font-size: 0.9rem;
+  color: #e5e7eb;
+}
+.learn-section h2 {
+  margin-top: 0;
+  margin-bottom: 6px;
+  font-size: 1rem;
+}
+.learn-section ul {
+  margin: 4px 0 0 18px;
+  padding: 0;
+  font-size: 0.88rem;
+}
+/* Make Back button small in AESVisualizer only */
+.aes-root .aes-back-button {
+  width: auto !important;
+  max-width: 180px;
+  align-self: flex-start;
+
+  padding: 6px 14px !important;
+  font-size: 0.8rem !important;
+
+  border-radius: 12px !important;
+  border: 1px solid rgba(148, 163, 184, 0.4) !important;
+  background: rgba(15, 23, 42, 0.4) !important;
+}
+
+.aes-root .aes-back-button:hover {
+  background: rgba(148, 163, 184, 0.15) !important;
+}
+/* Add to aes.css */
+
+.aes-section {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.aes-section-title {
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin: 0 0 6px 0;
+  color: var(--text-main);
+}
+
+.aes-textarea {
+  width: 100%;
+  padding: 9px 10px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-subtle);
+  background: #020617;
+  color: var(--text-main);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Poppins", sans-serif;
+  font-size: 0.9rem;
+  resize: vertical;
+  min-height: 80px;
+}
+
+.aes-textarea:focus {
+  outline: 1.5px solid rgba(234, 179, 8, 0.7);
+  border-color: transparent;
+}
+
+.aes-full-summary {
+  padding: 10px 12px;
+  background: rgba(37, 99, 235, 0.15);
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(59, 130, 246, 0.4);
+  font-size: 0.85rem;
+  color: var(--text-main);
+}
+
+.aes-full-summary p {
+  margin: 4px 0;
+}
+
+.aes-block-selector {
+  margin-top: 10px;
+}
+
+.aes-timeline {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  padding: 8px 0;
+}
+
+.aes-timeline-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  padding: 6px 10px;
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(148, 163, 184, 0.4);
+  background: rgba(15, 23, 42, 0.7);
+  cursor: pointer;
+  transition: all 0.15s ease;
+  font-size: 0.75rem;
+}
+
+.aes-timeline-step:hover {
+  background: rgba(30, 64, 175, 0.5);
+  border-color: rgba(167, 139, 250, 0.6);
+}
+
+.aes-timeline-step--active {
+  background: rgba(37, 99, 235, 0.5);
+  border-color: rgba(59, 130, 246, 0.8);
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.3);
+}
+
+.aes-timeline-round {
+  font-weight: 600;
+  color: var(--accent);
+}
+
+.aes-timeline-label {
+  color: var(--text-muted);
+  font-size: 0.7rem;
+}
+
+.aes-steps-stepname {
+  color: var(--accent);
+  font-weight: 500;
+}
+
+.aes-legend {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 12px;
+  padding: 10px 12px;
+  background: rgba(15, 23, 42, 0.5);
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(148, 163, 184, 0.3);
+}
+
+.aes-legend-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.aes-legend-dot {
+  width: 16px;
+  height: 16px;
+  border-radius: 4px;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.aes-legend-dot--state {
+  background: #1d4ed8;
+  box-shadow: 0 4px 8px rgba(30, 64, 175, 0.5);
+}
+
+.aes-legend-dot--key {
+  background: #020617;
+  border: 1px solid rgba(148, 163, 184, 0.5);
+}
+
+.aes-legend-title {
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-bottom: 2px;
+}
+
+.aes-legend-text {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  line-height: 1.4;
+}
+
+.auth-remember {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  cursor: pointer;
+}
+
+.auth-footer {
+  margin-top: 16px;
+  text-align: center;
+}
+
+.auth-footer-text {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.auth-footer-link {
+  padding: 0;
+  margin: 0;
+}
+.back-button {
+  background: transparent;
+  border: none;
+  color: #a5b4fc;
+  font-size: 0.9rem;
+  cursor: pointer;
+  padding: 8px 0;
+  transition: color 0.2s ease;
+  font-family: inherit;
+}
+
+.back-button:hover {
+  color: #c7d2fe;
+  text-decoration: underline;
+}
+
+.aes-section {
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.aes-section-title {
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin: 0 0 16px;
+  color: var(--text-main);
+}
+
+.aes-full-summary {
+  margin-top: 16px;
+  padding: 16px;
+  background: rgba(34, 197, 94, 0.1);
+  border: 1px solid rgba(34, 197, 94, 0.3);
+  border-radius: var(--radius-lg);
+}
+
+.aes-full-summary p {
+  margin: 0 0 8px;
+  font-size: 0.9rem;
+  color: var(--text-main);
+}
+
+.aes-full-summary p:last-of-type {
+  margin-bottom: 0;
+}
+
+.aes-block-selector {
+  margin-top: 16px;
+}
+
+.aes-textarea {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-subtle);
+  background: #020617;
+  color: var(--text-main);
+  font-family: "Fira Code", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+    "Liberation Mono", "Courier New", monospace;
+  font-size: 0.9rem;
+  resize: vertical;
+  min-height: 80px;
+}
+
+.aes-textarea:focus {
+  outline: 1.5px solid rgba(234, 179, 8, 0.7);
+  border-color: transparent;
+}
+
+.aes-legend {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.aes-legend-item {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+.aes-legend-dot {
+  width: 16px;
+  height: 16px;
+  border-radius: 4px;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.aes-legend-dot--state {
+  background: #1d4ed8;
+}
+
+.aes-legend-dot--key {
+  background: #020617;
+  border: 2px solid rgba(148, 163, 184, 0.5);
+}
+
+.aes-legend-title {
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin: 0 0 4px;
+  color: var(--text-main);
+}
+
+.aes-legend-text {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  line-height: 1.4;
+}
+/* ========================================
+   COMPLETE LIGHT MODE SUPPORT
+   ======================================== */
+
+/* Main containers */
+:root.light .aes-root {
+  background: var(--bg-page);
+}
+
+:root.light .aes-panel,
+:root.light .aes-grid-card,
+:root.light .aes-cipher-section,
+:root.light .aes-stat-card {
+  background: var(--bg-card);
+  border-color: var(--border-subtle);
+}
+
+/* Text colors */
+:root.light .aes-title,
+:root.light .aes-panel-title,
+:root.light .aes-grid-title,
+:root.light .aes-stat-value {
+  color: var(--text-main);
+}
+
+:root.light .aes-subtitle,
+:root.light .aes-steps-subtitle,
+:root.light .aes-stat-label,
+:root.light .aes-help,
+:root.light .aes-result-label,
+:root.light .aes-label {
+  color: var(--text-muted);
+}
+
+/* Form elements */
+:root.light .aes-input,
+:root.light .aes-select,
+:root.light .aes-textarea {
+  background: var(--bg-elevated);
+  border-color: var(--border-subtle);
+  color: var(--text-main);
+}
+
+:root.light .aes-input::placeholder,
+:root.light .aes-textarea::placeholder {
+  color: #94a3b8;
+}
+
+:root.light .aes-input:focus,
+:root.light .aes-textarea:focus {
+  outline: 1.5px solid rgba(245, 158, 11, 0.7);
+  border-color: transparent;
+}
+
+/* Buttons */
+:root.light .aes-button--ghost {
+  background: rgba(248, 250, 252, 0.7);
+  border-color: rgba(148, 163, 184, 0.4);
+  color: var(--text-main);
+}
+
+:root.light .aes-button--ghost:hover:not(:disabled) {
+  background: rgba(102, 126, 234, 0.15);
+  border-color: rgba(102, 126, 234, 0.4);
+}
+
+/* Timeline */
+:root.light .aes-timeline-step {
+  background: var(--bg-elevated);
+  border-color: var(--border-subtle);
+  color: var(--text-main);
+}
+
+:root.light .aes-timeline-step:hover:not(.aes-timeline-step--active) {
+  background: rgba(102, 126, 234, 0.1);
+  border-color: rgba(102, 126, 234, 0.3);
+}
+
+:root.light .aes-timeline-step--active {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: white;
+  border-color: #667eea;
+}
+
+:root.light .aes-timeline-round {
+  color: var(--text-muted);
+}
+
+:root.light .aes-timeline-step--active .aes-timeline-round,
+:root.light .aes-timeline-step--active .aes-timeline-label {
+  color: white;
+}
+
+/* Matrices */
+:root.light .aes-cell--state {
+  background: #3b82f6;
+  box-shadow: 0 10px 18px rgba(59, 130, 246, 0.4);
+  color: white;
+}
+
+:root.light .aes-cell--key {
+  background: #f1f5f9;
+  border-color: rgba(148, 163, 184, 0.4);
+  color: var(--text-main);
+}
+
+/* Legend */
+:root.light .aes-legend-dot--state {
+  background: #3b82f6;
+}
+
+:root.light .aes-legend-dot--key {
+  background: #f1f5f9;
+  border-color: rgba(148, 163, 184, 0.5);
+}
+
+:root.light .aes-legend-title {
+  color: var(--text-main);
+}
+
+:root.light .aes-legend-text {
+  color: var(--text-muted);
+}
+
+/* Error & Success messages */
+:root.light .aes-error {
+  background: rgba(239, 68, 68, 0.1);
+  border-color: rgba(239, 68, 68, 0.4);
+  color: #dc2626;
+}
+
+:root.light .aes-full-summary {
+  background: rgba(34, 197, 94, 0.08);
+  border-color: rgba(34, 197, 94, 0.3);
+}
+
+:root.light .aes-full-summary p {
+  color: var(--text-main);
+}
+
+/* Toast */
+:root.light .aes-toast {
+  background: rgba(255, 255, 255, 0.98);
+  border-color: rgba(148, 163, 184, 0.6);
+  color: var(--text-main);
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.2);
+}
+
+/* Cipher value */
+:root.light .aes-cipher-value {
+  color: var(--text-main);
+}
+
+/* Back button */
+:root.light .back-button {
+  color: #7c3aed;
+}
+
+:root.light .back-button:hover {
+  color: #6d28d9;
+}
+
+/* Section titles */
+:root.light .aes-section-title {
+  color: var(--text-main);
+}
+
+/* Stats cards gradient for light mode */
+:root.light .aes-stat-card {
+  background: radial-gradient(circle at top, rgba(59, 130, 246, 0.15), transparent 60%);
+}
+
+/* Title icon */
+:root.light .aes-title-icon {
+  box-shadow: 0 0 0 1px rgba(15, 23, 42, 0.2), 0 18px 35px rgba(15, 23, 42, 0.15);
+}
+
+/* Steps name */
+:root.light .aes-steps-stepname {
+  color: var(--text-main);
+}
+
+
+}
